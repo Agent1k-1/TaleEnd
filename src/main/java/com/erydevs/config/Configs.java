@@ -97,4 +97,16 @@ public class Configs {
     public float getEndStartSoundVolume() {
         return (float) config.getDouble("sounds.volume");
     }
+
+    public boolean isKillerBarEnabled() {
+        return config.getBoolean("killer-bar.killer", true);
+    }
+
+    public List<String> getKillerBarTexts() {
+        return config.getStringList("killer-bar.text");
+    }
+
+    public List<String> getKillerBarActions() {
+        return config.getStringList("killer-bar.action");
+    }
 }

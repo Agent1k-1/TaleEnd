@@ -14,6 +14,12 @@ sounds: # звуки
   sound: true # включен ли звук
   pitch: 1 # Питч звука
   volume: 1 # Громкость звука
+killer-bar:
+  killer: true # будет ли отображаться киллер
+  text:
+    - "&A%player_name% &fбыл убит &6%end_mobs%"
+  action:
+    - "[actionbar]" # где будет отображаться сообщение о смерти
 message:
   end-start:
     - ""
