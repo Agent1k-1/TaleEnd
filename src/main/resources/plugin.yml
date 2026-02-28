@@ -1,6 +1,7 @@
 name: TaleEnd
 version: '${project.version}'
 main: com.erydevs.TaleEnd
+author: Agent1k
 api-version: '1.16'
 softdepend: [ PlaceholderAPI ]
 commands:

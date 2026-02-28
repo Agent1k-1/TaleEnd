@@ -1,9 +1,15 @@
+# Плагин на захват энда
+# зависимости
+# PlaceholderAPI
+# поддерживаемые версии
+# 1.16+
+# Автор: Agent1k
 configuration-settings:
-  end-starting:
+  end-starting: # начало старта захвата
     - "Суббота:16:00"
-  end-stopping:
+  end-stopping: # окончание захвата
     - "Суббота:19:00"
-sounds:
+sounds: # звуки
   END-START: ENTITY_ENDERMAN_SCREAM # звук при старте захвата
   sound: true # включен ли звук
   pitch: 1 # Питч звука

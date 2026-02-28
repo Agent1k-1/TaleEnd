@@ -2,19 +2,23 @@ package com.erydevs.commands;
 
 import com.erydevs.TaleEnd;
 import com.erydevs.portal.EndPortal;
+import com.erydevs.sounds.Sounds;
 import com.erydevs.utils.HexUtils;
-import lombok.AllArgsConstructor;
 import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@AllArgsConstructor
 public class EndCommand implements CommandExecutor {
 
     private final TaleEnd plugin;
+    private final Sounds soundManager;
+
+    public EndCommand(TaleEnd plugin) {
+        this.plugin = plugin;
+        this.soundManager = new Sounds(plugin);
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -44,7 +48,7 @@ public class EndCommand implements CommandExecutor {
                 for (String msg : plugin.getConfigs().getEndStartMessages()) {
                     broadcastToPlayers(HexUtils.colorize(msg));
                 }
-                playStartSound();
+                soundManager.playStartSound();
                 break;
             case "stop":
                 if (!player.hasPermission("end.admin")) {
@@ -98,21 +102,4 @@ public class EndCommand implements CommandExecutor {
         }
     }
 
-    private void playStartSound() {
-        if (!plugin.getConfigs().isEndStartSoundEnabled()) {
-            return;
-        }
-        try {
-            String soundName = plugin.getConfigs().getEndStartSound();
-            float pitch = plugin.getConfigs().getEndStartSoundPitch();
-            float volume = plugin.getConfigs().getEndStartSoundVolume();
-            Sound sound = Sound.valueOf(soundName);
-            
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                p.playSound(p.getLocation(), sound, volume, pitch);
-            }
-        } catch (Exception e) {
-            plugin.getLogger().warning("Неверный звук: " + plugin.getConfigs().getEndStartSound());
-        }
-    }
 }

@@ -8,7 +8,6 @@ import com.erydevs.papi.PlaceholderAPIHook;
 import com.erydevs.scheduler.EndScheduler;
 import lombok.Getter;
 import org.bukkit.Bukkit;
-import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @Getter
@@ -25,14 +24,9 @@ public final class TaleEnd extends JavaPlugin {
         configs = new Configs(this);
         configs.loadConfigs();
 
-        PluginCommand endCommand = Bukkit.getPluginCommand("end");
-        if (endCommand != null) {
-            endCommand.setExecutor(new EndCommand(this));
-            endCommand.setTabCompleter(new EndCompleter());
-        }
-
-        Bukkit.getPluginManager().registerEvents(new EndListener(this), this);
-
+        registerCommands();
+        registerListeners();
+        
         scheduler = new EndScheduler(this);
         scheduler.startScheduler();
 
@@ -41,6 +35,15 @@ public final class TaleEnd extends JavaPlugin {
         }
 
         getLogger().info("TaleEnd плагин успешно загружен!");
+    }
+
+    private void registerCommands() {
+        getCommand("end").setExecutor(new EndCommand(this));
+        getCommand("end").setTabCompleter(new EndCompleter());
+    }
+
+    private void registerListeners() {
+        Bukkit.getPluginManager().registerEvents(new EndListener(this), this);
     }
 
     @Override

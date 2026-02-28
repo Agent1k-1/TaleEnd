@@ -1,13 +1,10 @@
 package com.erydevs.scheduler;
 
 import com.erydevs.TaleEnd;
-import com.erydevs.format.FormSub;
-import com.erydevs.format.Time;
 import com.erydevs.portal.EndPortal;
+import com.erydevs.sounds.Sounds;
 import com.erydevs.utils.HexUtils;
-import lombok.AllArgsConstructor;
 import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import java.time.DayOfWeek;
@@ -18,10 +15,12 @@ import java.util.List;
 public class EndScheduler {
 
     private final TaleEnd plugin;
+    private final Sounds soundManager;
     private boolean eventTriggered = false;
 
     public EndScheduler(TaleEnd plugin) {
         this.plugin = plugin;
+        this.soundManager = new Sounds(plugin);
     }
 
     public void startScheduler() {
@@ -81,25 +80,7 @@ public class EndScheduler {
         for (String msg : plugin.getConfigs().getEndStartMessages()) {
             broadcastToPlayers(HexUtils.colorize(msg));
         }
-        playStartSound();
-    }
-
-    private void playStartSound() {
-        if (!plugin.getConfigs().isEndStartSoundEnabled()) {
-            return;
-        }
-        try {
-            String soundName = plugin.getConfigs().getEndStartSound();
-            float pitch = plugin.getConfigs().getEndStartSoundPitch();
-            float volume = plugin.getConfigs().getEndStartSoundVolume();
-            Sound sound = Sound.valueOf(soundName);
-            
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                p.playSound(p.getLocation(), sound, volume, pitch);
-            }
-        } catch (Exception e) {
-            plugin.getLogger().warning("Неверный звук: " + plugin.getConfigs().getEndStartSound());
-        }
+        soundManager.playStartSound();
     }
 
     private void stopEndEvent() {

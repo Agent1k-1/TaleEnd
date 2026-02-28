@@ -41,9 +41,9 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
     public String onPlaceholderRequest(Player player, @NotNull String params) {
         if (params.equals("status")) {
             if (EndPortal.isOpen()) {
-                return HexUtils.colorize("&aОткрыт");
+                return HexUtils.colorize("&aАктивен");
             } else {
-                return HexUtils.colorize("&cЗакрыт");
+                return HexUtils.colorize("&cНеактивен");
             }
         }
         
@@ -53,7 +53,7 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 
         if (params.equals("stop_time")) {
             if (!EndPortal.isOpen()) {
-                return HexUtils.colorize("&bЗахват &fеще не начался");
+                return HexUtils.colorize("&bЗахват &fещё закрыт");
             }
             return TimeUntilEnd.getTimeUntilStop(plugin);
         }
