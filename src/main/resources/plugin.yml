@@ -1,0 +1,12 @@
+name: TaleEnd
+version: '${project.version}'
+main: com.erydevs.TaleEnd
+api-version: '1.16'
+softdepend: [ PlaceholderAPI ]
+commands:
+  end:
+permissions:
+  end.admin:
+    default: op
+  end.portal:
+    default: op

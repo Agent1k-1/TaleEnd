@@ -1,0 +1,37 @@
+configuration-settings:
+  end-starting:
+    - "Суббота:16:00"
+  end-stopping:
+    - "Суббота:19:00"
+sounds:
+  END-START: ENTITY_ENDERMAN_SCREAM # звук при старте захвата
+  sound: true # включен ли звук
+  pitch: 1 # Питч звука
+  volume: 1 # Громкость звука
+message:
+  end-start:
+    - ""
+    - "&#FF8800▸ &#FFFFFFЗахват энда начался"
+    - "&#FFFFFFСкорее беги к порталу чтобы успеть"
+    - ""
+  end-stop:
+    - ""
+    - "&#FF0000▸ &#FFFFFFЗахват энда окончен"
+    - "&#FFFFFFПриходите в следующую субботу"
+    - ""
+  end-closed: "&#FF0000✕ &#FFFFFFВы не можете попасть в энд"
+  end-admin-start: "&#FF8800► &#FFFFFFВы запустили захват энда"
+  error-end-start: "&#FF0000✕ &#FFFFFFЗахват энда уже запущен"
+  end-admin-stop: "&#FF8800► &#FFFFFFВы остановили захват энда"
+  error-end-stop: "&#FF0000✕ &#FFFFFFЗахват энда уже остановлен"
+  admin-open-end: "&#FF8800► &#FFFFFFВы открыли доступ к энду"
+  end-open: "&#FF0000✘ &#FFFFFFАдминистратор открыл доступ к энду"
+  no-permission: "&#FF0000✕ &#FFFFFFУ вас нет прав"
+  config-reload: "&#00FF44Конфигурация успешно перезагружена"
+  end-help:
+    - "&#FF8800▸ &#FFFFFFКоманды для энда"
+    - ""
+    - "&#FF8800» /end start &#FFFFFF- Начать захват"
+    - "&#FF8800» /end stop &#FFFFFF- Остановить захват"
+    - "&#FF8800» /end open &#FFFFFF- Открыть доступ"
+    - "&#FF8800» /end reload &#FFFFFF- перезагрузить конфиг"
