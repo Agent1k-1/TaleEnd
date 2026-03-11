@@ -1,5 +1,6 @@
 package com.erydevs.format;
 
+import com.erydevs.TaleEnd;
 import lombok.Getter;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -8,23 +9,26 @@ import java.time.format.DateTimeFormatter;
 @Getter
 public class Time {
 
-    private static final ZoneId MOSCOW_ZONE = ZoneId.of("Europe/Moscow");
-    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm").withZone(MOSCOW_ZONE);
+    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
 
-    public static String getCurrentTime() {
-        LocalDateTime now = LocalDateTime.now(MOSCOW_ZONE);
+    public static String getCurrentTime(TaleEnd plugin) {
+        ZoneId zoneId = ZoneId.of(plugin.getConfigs().getTimeZone());
+        LocalDateTime now = LocalDateTime.now(zoneId);
         return TIME_FORMATTER.format(now);
     }
 
-    public static String formatTime(LocalDateTime dateTime) {
-        return TIME_FORMATTER.format(dateTime.atZone(MOSCOW_ZONE));
+    public static String formatTime(TaleEnd plugin, LocalDateTime dateTime) {
+        ZoneId zoneId = ZoneId.of(plugin.getConfigs().getTimeZone());
+        return TIME_FORMATTER.format(dateTime.atZone(zoneId));
     }
 
-    public static int getCurrentHour() {
-        return LocalDateTime.now(MOSCOW_ZONE).getHour();
+    public static int getCurrentHour(TaleEnd plugin) {
+        ZoneId zoneId = ZoneId.of(plugin.getConfigs().getTimeZone());
+        return LocalDateTime.now(zoneId).getHour();
     }
 
-    public static int getCurrentMinute() {
-        return LocalDateTime.now(MOSCOW_ZONE).getMinute();
+    public static int getCurrentMinute(TaleEnd plugin) {
+        ZoneId zoneId = ZoneId.of(plugin.getConfigs().getTimeZone());
+        return LocalDateTime.now(zoneId).getMinute();
     }
 }

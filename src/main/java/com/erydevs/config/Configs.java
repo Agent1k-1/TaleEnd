@@ -82,12 +82,16 @@ public class Configs {
         return config.getStringList("configuration-settings.end-stopping");
     }
 
+    public String getTimeZone() {
+        return config.getString("configuration-settings.time-zone");
+    }
+
     public String getEndStartSound() {
         return config.getString("sounds.END-START");
     }
 
     public boolean isEndStartSoundEnabled() {
-        return config.getBoolean("sounds.sound", true);
+        return config.getBoolean("sounds.sound");
     }
 
     public float getEndStartSoundPitch() {
@@ -99,7 +103,7 @@ public class Configs {
     }
 
     public boolean isKillerBarEnabled() {
-        return config.getBoolean("killer-bar.killer", true);
+        return config.getBoolean("killer-bar.killer");
     }
 
     public List<String> getKillerBarTexts() {

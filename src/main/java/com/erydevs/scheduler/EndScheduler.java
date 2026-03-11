@@ -25,7 +25,7 @@ public class EndScheduler {
 
     public void startScheduler() {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
-            LocalDateTime now = LocalDateTime.now(ZoneId.of("Europe/Moscow"));
+            LocalDateTime now = LocalDateTime.now(ZoneId.of(plugin.getConfigs().getTimeZone()));
             String currentTime = String.format("%02d:%02d", now.getHour(), now.getMinute());
             
             List<String> startingTimes = plugin.getConfigs().getEndStartingTimes();

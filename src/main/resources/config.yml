@@ -9,6 +9,7 @@ configuration-settings:
     - "Суббота:16:00"
   end-stopping: # окончание захвата
     - "Суббота:19:00"
+  time-zone: "Europe/Moscow"
 sounds: # звуки
   END-START: ENTITY_ENDERMAN_SCREAM # звук при старте захвата
   sound: true # включен ли звук

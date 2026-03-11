@@ -9,8 +9,6 @@ import java.util.List;
 
 public class TimeUntilEnd {
 
-    private static final ZoneId MOSCOW_ZONE = ZoneId.of("Europe/Moscow");
-
     public static String getTimeUntilOpen(TaleEnd plugin) {
         List<String> timeFormats = plugin.getConfigs().getEndStartingTimes();
         
@@ -18,7 +16,8 @@ public class TimeUntilEnd {
             return "Не установлено";
         }
 
-        LocalDateTime now = LocalDateTime.now(MOSCOW_ZONE);
+        ZoneId zoneId = ZoneId.of(plugin.getConfigs().getTimeZone());
+        LocalDateTime now = LocalDateTime.now(zoneId);
         LocalDateTime nextOpen = findNextOpenTime(now, timeFormats);
 
         if (nextOpen == null) {
@@ -35,7 +34,8 @@ public class TimeUntilEnd {
             return "Не установлено";
         }
 
-        LocalDateTime now = LocalDateTime.now(MOSCOW_ZONE);
+        ZoneId zoneId = ZoneId.of(plugin.getConfigs().getTimeZone());
+        LocalDateTime now = LocalDateTime.now(zoneId);
         LocalDateTime nextStop = findNextStopTime(now, timeFormats);
 
         if (nextStop == null) {
